@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Javi Palacios · Cursos de cine</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<!--
+=====================================================================
+  GUÍA FÁCIL · ESTE ES TU ÚNICO ARCHIVO (index.html)
+=====================================================================
+  CÓMO FUNCIONA
+  Esta web es el escaparate. Cuando alguien pulsa "Comprar", se abre
+  la página de pago de PAYHIP, que cobra con PayPal o tarjeta (el
+  dinero va a tu PayPal), crea la cuenta del alumno y le da acceso a
+  los vídeos. Los vídeos los subes en Payhip, no aquí.
+
+  CÓMO EDITARLO
+  Abre este archivo con el Bloc de notas. Todo lo que cambias está en
+  el bloque "1) TUS DATOS", cerca del final. Pulsa Ctrl+F y busca esa
+  frase para llegar.
+
+  QUÉ HACER, EN ORDEN
+  1. En payhip.com crea tu cuenta, conecta tu PayPal en los ajustes de
+     pagos y crea un producto "Online Course" por cada episodio (sube
+     ahí los vídeos y pon el precio).
+  2. De cada producto copia su enlace (algo como payhip.com/b/AbC12)
+     y pégalo en el "url" de su episodio. El del curso completo, en PACK.
+  3. En "MIS_CURSOS_URL" pega el enlace por donde tus alumnos entran a
+     ver lo que compraron (búscalo en Payhip, en la ayuda para alumnos).
+  4. Cambia nombre, textos y tu foto como se explica abajo.
+  5. Publica en GitHub:
+       a) github.com > "New repository" (nombre: curso-cine, público).
+       b) "uploading an existing file" > sube este archivo index.html
+          (debe llamarse exactamente index.html) > "Commit changes".
+       c) Settings > Pages > "Deploy from a branch" > rama main >
+          carpeta /(root) > Save.
+       d) En 1-2 minutos tu web estará en
+          tuusuario.github.io/curso-cine
+     Cada vez que cambies algo: abre el archivo en GitHub > lápiz
+     (editar) o vuelve a subirlo.
+
+  PRECIOS
+  El precio que COBRA es el que pongas en Payhip. El de este archivo
+  solo se muestra, así que cámbialo en los dos sitios y que coincidan.
+
+  AÑADIR UN EPISODIO ... copia un bloque { ... }, pégalo debajo con su
+                         coma y cambia los datos.
+  QUITAR UN EPISODIO ... borra su bloque { ... } entero.
+  PRÓXIMAMENTE ......... soon: true. Cuando lo grabes: soon: false y
+                         pon su url de Payhip.
+  COLORES .............. los 5 valores de ":root" al principio del estilo.
+  NOMBRE ............... busca "Javi Palacios" y cámbialo.
+  TEXTOS ............... busca la frase y escríbela a tu gusto (no
+                         toques lo que está entre los signos < y >).
+  TU FOTO .............. sube foto.jpg junto a index.html y, en "Sobre
+                         mí", sustituye el texto de class="photo" por
+                         una etiqueta img con src="foto.jpg".
+=====================================================================
+-->
+<style>
+:root{--vino:#2b0a12;--vino2:#5a1424;--oro:#e3b04b;--papel:#ecebe6;--tinta:#1b1416}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--vino);color:#f4ece6;font:400 1rem/1.6 "DM Sans",system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:"Bodoni Moda",Georgia,serif;margin:0;line-height:1.08}
+button,input,select{font:inherit}button{cursor:pointer}
+.wrap{max-width:980px;margin:0 auto;padding:0 6vw}
+body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:70;opacity:.07;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");animation:g 1s steps(6) infinite}
+@keyframes g{20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}}
+.cur{position:fixed;top:0;bottom:0;width:50.5%;background:repeating-linear-gradient(90deg,#6b1527 0 38px,#4a0f1d 38px 76px);z-index:90;transition:transform 1.8s cubic-bezier(.7,0,.2,1) .3s}
+.cur.l{left:0}.cur.r{right:0}body.open .cur.l{transform:translateX(-101%)}body.open .cur.r{transform:translateX(101%)}body.open .cur{pointer-events:none}
+header{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:14px 6vw;background:linear-gradient(#2b0a12ee,#2b0a1200)}
+.logo{font:700 1.15rem "Bodoni Moda",serif;text-decoration:none;color:inherit}.logo i{color:var(--oro);font-weight:500}
+.pill{background:var(--oro);color:var(--tinta);border:0;border-radius:99px;padding:8px 18px;font-weight:700}
+.hero{min-height:100vh;display:flex;align-items:center;padding:110px 0 70px;background:radial-gradient(520px circle at var(--mx,70%) var(--my,30%),#ffd98a40,transparent 60%)}
+.hero h1{font-size:clamp(2.8rem,9vw,6rem);max-width:12ch}.hero h1 em{color:var(--oro)}
+.hero p{max-width:46ch;font-size:1.15rem;opacity:.9;margin:22px 0 30px}
+.btn{display:inline-block;background:var(--oro);color:var(--tinta);border:0;border-radius:4px;padding:14px 26px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 0 #0004}.btn:disabled{opacity:.5}
+section{padding:90px 0}
+h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:12px}.sub{max-width:54ch;opacity:.8;margin:0 0 40px}
+/* episodios: lista de filas */
+.ep{display:grid;grid-template-columns:70px 1fr auto auto;gap:6px 22px;align-items:center;padding:26px 0;border-top:1px solid #e3b04b55;transition:background .3s,padding .3s}
+.ep:hover{background:#ffffff0a;padding-inline:14px}
+.ep .n{font:700 3rem "Bodoni Moda",serif;color:var(--oro);line-height:1}
+.ep h3{font-size:1.5rem}.ep p{margin:4px 0;opacity:.8}.ep small{opacity:.6}
+.ep .pr{font:700 1.7rem "Bodoni Moda",serif}
+.ep.soon{opacity:.55}
+.buy{background:var(--oro);color:var(--tinta);border:0;border-radius:4px;padding:11px 20px;font-weight:700;min-width:120px}
+.buy:disabled{background:#fff3;color:#fffa}
+.pack{margin-top:40px;border:2px solid var(--oro);border-radius:8px;padding:30px;display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;position:relative;overflow:hidden}
+.pack::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 40%,#ffffff22 50%,transparent 60%);transform:translateX(-100%);animation:sh 4s infinite;pointer-events:none}
+@keyframes sh{60%,100%{transform:translateX(100%)}}
+.pack h3{font-size:1.8rem}.pack s{opacity:.55;margin-right:8px}
+.light{background:var(--papel);color:var(--tinta)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.photo{aspect-ratio:4/5;border-radius:8px;background:linear-gradient(160deg,var(--vino2),#000);display:grid;place-items:center;color:#fff7;font:italic 1.1rem "Bodoni Moda",serif;text-align:center;padding:20px}
+.photo img{width:100%;height:100%;object-fit:cover}
+details{border-bottom:1px solid #0003;padding:16px 0}summary{cursor:pointer;font-weight:700;font-size:1.1rem}details p{margin:10px 0 0}
+footer{padding:36px 0;text-align:center;opacity:.6;font-size:.9rem}
+@media(max-width:700px){.ep{grid-template-columns:50px 1fr}.ep .pr,.ep .buy{grid-column:2}.about{grid-template-columns:1fr}}
+/* ventana de pago */
+.ov{position:fixed;inset:0;background:#000c;z-index:80;display:none;place-items:center;padding:14px}.ov.on{display:grid}
+.box{background:var(--papel);color:var(--tinta);border-radius:10px;padding:26px;width:min(480px,100%);max-height:94vh;overflow:auto;animation:pop .3s}
+@keyframes pop{from{transform:scale(.93);opacity:0}}
+.box h3{font-size:1.6rem}.x{float:right;background:none;border:0;font-size:1.7rem;color:inherit}
+.box label{display:block;font-size:.85rem;font-weight:700;margin:10px 0 3px}
+.box input,.box select{width:100%;padding:11px;border:1px solid #0004;border-radius:5px;background:#fff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chk{display:flex;gap:8px;align-items:flex-start;margin:14px 0;font-size:.9rem}.chk input{width:auto;margin-top:4px}
+.sum{display:flex;justify-content:space-between;border-block:1px solid #0002;padding:12px 0;margin:14px 0;font-weight:700}
+.box .btn{width:100%;background:var(--vino2);color:#fff}
+.err{color:#b3261e;font-size:.9rem;min-height:1.2em}
+/* sala privada (pantalla completa) */
+#theater{position:fixed;inset:0;z-index:85;background:#0d0407;display:none;grid-template-columns:300px 1fr}#theater.on{display:grid}
+#side{padding:20px;border-right:1px solid #fff2;overflow:auto}
+#side button.it{display:block;width:100%;text-align:left;background:none;border:0;color:#fff;padding:12px;border-radius:6px;margin-bottom:4px}
+#side button.it:hover,#side button.it.cur2{background:#ffffff18}
+#stage{padding:24px;overflow:auto}
+#stage video{width:100%;max-height:72vh;background:#000;border-radius:8px}
+.rec{margin-top:24px;padding-top:16px;border-top:1px solid #fff2;font-size:.9rem}
+.rec input{padding:8px;border-radius:5px;border:0;margin:4px 4px 4px 0;width:min(240px,100%)}
+@media(max-width:760px){#theater{grid-template-columns:1fr;grid-template-rows:auto 1fr}#side{border-right:0;border-bottom:1px solid #fff2;max-height:34vh}}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,140px);background:var(--oro);color:var(--tinta);padding:14px 22px;border-radius:8px;font-weight:700;z-index:95;transition:transform .4s}#toast.on{transform:translate(-50%,0)}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.cur{display:none}}
+.link{background:none;border:0;color:#fffb;margin-left:12px;text-decoration:underline}
+a.pill,a.buy,a.btn{text-decoration:none;display:inline-block;text-align:center}
+</style>
+</head>
+<body>
+<div class="cur l"></div><div class="cur r"></div>
+
+<header>
+  <a class="logo" href="#inicio">Javi Palacios <i>Cine</i></a>
+  <a class="pill" id="mis" href="#" target="_blank" rel="noopener">Mis cursos</a>
+</header>
+
+<div class="hero" id="inicio"><div class="wrap">
+  <h1>Aprende cine <em>haciendo cine.</em></h1>
+  <p>Episodios en vídeo para dirigir, grabar y montar tus propias historias. Pagas con PayPal o tarjeta y recibes tu acceso al instante.</p>
+  <a class="btn" href="#episodios">Ver episodios</a>
+</div></div>
+
+<section id="episodios"><div class="wrap">
+  <h2 class="rv">Los episodios</h2>
+  <p class="sub rv">Elige uno suelto o llévate todo el curso con descuento.</p>
+  <div id="list"></div>
+  <div class="pack rv" id="pack"></div>
+</div></section>
+
+<section class="light" id="sobre-mi"><div class="wrap about">
+  <div class="photo rv">Aquí va tu foto</div>
+  <div class="rv">
+    <h2>Hola, soy Javi.</h2>
+    <p>Escribe aquí tu historia en 3 o 4 frases: qué has rodado, qué has aprendido y por qué quieres enseñarlo.</p>
+    <p>Mis cursos son cortos, directos y hechos para que acabes grabando.</p>
+  </div>
+</div></section>
+
+<section class="light" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Preguntas frecuentes</h2>
+  <details class="rv"><summary>¿Cuándo puedo ver el episodio?</summary><p>Al momento de pagar se abre en tu sala privada.</p></details>
+  <details class="rv"><summary>¿Cómo pago?</summary><p>Con PayPal o con tarjeta, en una ventana de pago segura.</p></details>
+  <details class="rv"><summary>¿Y si cambio de móvil u ordenador?</summary><p>Pulsa "Mis cursos" arriba y entra con el email de tu compra: allí tienes todo lo que has pagado.</p></details>
+  <details class="rv"><summary>¿Puedo pedir la devolución?</summary><p>Escribe aquí tu política de devoluciones.</p></details>
+</div></section>
+
+<footer>© <span id="yr"></span> Javi Palacios · Cine. Pagos seguros con PayPal.</footer>
+
+
+<script>
+/* =====================================================================
+   1) TUS DATOS  ← AQUÍ CAMBIAS TODO
+   ===================================================================== */
+
+// Enlace por donde tus alumnos entran a ver lo que compraron (de Payhip)
+const MIS_CURSOS_URL = "https://payhip.com/PON_AQUI_TU_ENLACE_DE_ALUMNOS";
+
+// Curso completo
+const PACK = { title: "Curso completo", desc: "Todos los episodios, los de ahora y los que vengan.",
+  price: 49, oldPrice: 79, url: "https://payhip.com/b/PON_AQUI" };
+
+// Episodios (el "url" es el enlace de Payhip de cada uno)
+const EPISODES = [
+  { num: "Episodio 1", title: "De la idea al guion", desc: "Cómo escribir tu primer corto.",
+    duration: "35 min", price: 12, soon: false, url: "https://payhip.com/b/PON_AQUI",
+    topics: ["Estructura en tres actos", "Escenas rodables", "Diálogos que suenan reales"] },
+
+  { num: "Episodio 2", title: "Cámara, planos y luz", desc: "Rodar bien con lo que tienes.",
+    duration: "48 min", price: 15, soon: false, url: "https://payhip.com/b/PON_AQUI",
+    topics: ["Tipos de plano", "Luz natural y artificial", "Movimientos de cámara"] },
+
+  { num: "Episodio 3", title: "Sonido que no se nota", desc: "Audio limpio sin gastar mucho.",
+    duration: "30 min", price: 12, soon: true, url: "",
+    topics: ["Micrófonos", "Sonido directo", "Ambiente y foley"] },
+
+  { num: "Episodio 4", title: "Montaje y ritmo", desc: "Dar vida a lo que has grabado.",
+    duration: "55 min", price: 15, soon: true, url: "",
+    topics: ["Cortes y ritmo", "Música", "Color básico"] }
+];
+
+/* =====================================================================
+   2) DE AQUÍ HACIA ABAJO NO HACE FALTA TOCAR NADA
+   ===================================================================== */
+const $ = id => document.getElementById(id);
+const money = n => n.toLocaleString("es-ES", { style: "currency", currency: "EUR" });
+function buy(url) {
+  if (!url || url.includes("PON_AQUI")) { alert("Falta poner tu enlace de Payhip en este episodio (mira la guía)."); return false; }
+  return true;
+}
+$("mis").href = MIS_CURSOS_URL;
+$("mis").onclick = () => { if (MIS_CURSOS_URL.includes("PON_AQUI")) { alert("Falta poner MIS_CURSOS_URL (mira la guía)."); return false; } };
+$("yr").textContent = new Date().getFullYear();
+
+$("list").innerHTML = EPISODES.map(e => `<div class="ep rv ${e.soon ? "soon" : ""}">
+  <div class="n">${e.num.replace(/\D+/, "")}</div>
+  <div><h3>${e.title}</h3><p>${e.desc}</p><small>${e.duration} · ${e.topics.join(" · ")}</small></div>
+  <div class="pr">${money(e.price)}</div>
+  ${e.soon ? '<button class="buy" disabled>Próximamente</button>' : `<a class="buy" href="${e.url}" target="_blank" rel="noopener" onclick="return buy('${e.url}')">Comprar</a>`}</div>`).join("");
+$("pack").innerHTML = `<div><h3>${PACK.title}</h3><div>${PACK.desc}</div></div>
+  <div><span class="pr" style="font:700 1.7rem 'Bodoni Moda',serif"><s>${money(PACK.oldPrice)}</s>${money(PACK.price)}</span>
+  <a class="btn" style="margin-left:14px" href="${PACK.url}" target="_blank" rel="noopener" onclick="return buy('${PACK.url}')">Quiero todo</a></div>`;
+
+/* efectos */
+addEventListener("load", () => setTimeout(() => document.body.classList.add("open"), 300));
+$("inicio").addEventListener("mousemove", e => { const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--mx", e.clientX - r.left + "px"); e.currentTarget.style.setProperty("--my", e.clientY - r.top + "px"); });
+const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }), { threshold: .12 });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
